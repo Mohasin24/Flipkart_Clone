@@ -1,18 +1,20 @@
 import { IoMdSearch } from "react-icons/io";
 import CustomButton from "./CustomButton";
 import { FaShoppingCart } from "react-icons/fa";
-import { FaDiamond } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import LoginDialog from "../login-registration/LoginDailog";
 import { mainLogo } from "../../constants/Data";
+import { DataContext } from "../../context/DataContext";
+import Profile from "./Profile";
 
 const Header = () => {
 
   const [isMenuOpen, setMenuOpen] = useState(false)
   const [open, setOpen] = useState(false);
 
+  const {account, setAccount} = useContext(DataContext)
 
   return (
     <>
@@ -23,9 +25,9 @@ const Header = () => {
         {/* Logo */}
         <div className="text-white line-h-0">
           <img src={mainLogo.img1} alt="" className="w-16 md:w-24 "/>
-          <a href="" className="hidden md:flex flex-row items-center gap-1 hover:underline">Explore <span className="hidden md:text-yellow-400">Plus</span>
+          <button className="hidden md:flex flex-row items-center gap-1 hover:underline">Explore <span className="hidden md:text-yellow-400">Plus</span>
           <img src={mainLogo.img2} alt="" className="w-3"/>
-          </a>
+          </button>
         </div>
 
         {/* Search bar */}
@@ -50,7 +52,17 @@ const Header = () => {
             operation={()=>setOpen(false)}
           /> */}
 
-          <button className="bg-white text-blue-700 px-5 active:bg-blue-700 active:text-white" onClick={()=>setOpen(true)}>Login</button>
+
+          {
+            account ? 
+            
+            // <button className="bg-white text-blue-700 px-5 active:bg-blue-700 active:text-white">{account}</button> 
+            <Profile account={account} setAccount={setAccount} />
+            : 
+            <button className="bg-white text-blue-700 px-5 active:bg-blue-700 active:text-white" onClick={()=>setOpen(true)}>Login</button>
+          }
+
+          
 
           <CustomButton text={"Become a seller"} btnColor={"text-white"} />
           <CustomButton text={"More"} btnColor={"text-white"} />

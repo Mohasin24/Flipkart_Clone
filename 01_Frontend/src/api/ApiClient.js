@@ -3,7 +3,7 @@ import axios from 'axios';
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const ApiClient = axios.create({
-     baseURL :"http://localhost:3232/api/v1",
+     baseURL :apiKey,
      headers : {
           'Content-Type' : 'application/json',
      }

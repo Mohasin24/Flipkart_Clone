@@ -1,5 +1,5 @@
 
-const CustomButton = ({text, bgColor,btnColor, handleClick})=>{
+const CustomButton = ({text, bgColor,btnColor})=>{
 
 
      return(
