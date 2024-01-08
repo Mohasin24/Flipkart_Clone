@@ -1,21 +1,53 @@
-const UserModel = require('../model/User_Schema');
+const User = require('../model/User_Schema');
 
 const AuthenticationSignup = async (req,res)=>{
      
 
      try {
-          const User =  new UserModel(req.body)
-          const response = await User.save()
-          console.log(response)
+          const currUser = req.body;
+
+          const userExists = await User.findOne({username : currUser.username})
+
+          // if(userExists)
+          // {
+          //      res.status(401).json({msg : "User already exists"})
+          //      return
+          // }
+
+          const newUser =  new User(currUser)
+
+          const response = await newUser.save()
+
           res.status(200).json({msg : "Successful"})
      } catch (error) {
           console.log(error)
-          res.status(500).json({msg:"Something went wrong on server!"})
+          res.status(500).json(error)
      }
 }
 
-const AuthenticationLogin = (req, res)=>{
-     console.log(req.body)
+const AuthenticationLogin = async(req, res)=>{
+
+     try {
+          const currUser = req.body
+
+          const validatedUser = await User.findOne({email : currUser.email, password : currUser.password})
+
+          if(validatedUser)
+          {
+               console.log(validatedUser)
+               res.status(200).json({data:validatedUser})
+          }else{
+               console.log(validatedUser)
+               res.status(404).json({message : "User not registered"})
+          }
+          
+     } catch (error) {
+          console.log(error)
+          res.status(500).json(error)
+     }
+     
 }
 
 module.exports = {AuthenticationSignup, AuthenticationLogin}
+
+9765728344

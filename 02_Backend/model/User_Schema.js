@@ -11,6 +11,12 @@ const userSchema = mongoose.Schema({
           required : true,
           trim : true
      },
+     username : {
+          type : String,
+          required : true,
+          trim : true,
+          // unique : true
+     },
      email : {
           type : String,
           required : true,
@@ -24,7 +30,7 @@ const userSchema = mongoose.Schema({
           // unique : true,
           trim : true,
           min : [10, "Mobile number must be 10 digits."],
-          max:[10, "Mobile number must be 10 digits."]
+          // max:[10, "Mobile number must be 10 digits."]
      },
      password : {
           type : String,
