@@ -8,6 +8,7 @@ import LoginDialog from "../login-registration/LoginDailog";
 import { mainLogo } from "../../constants/Data";
 import { DataContext } from "../../context/DataContext";
 import Profile from "./Profile";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -23,13 +24,14 @@ const Header = () => {
         <div className="max-w-screen-lg flex flex-row items-center gap-2 md:gap-8">
         
         {/* Logo */}
-        <div className="text-white line-h-0">
+        <Link to={`/`}>
+        <div className="text-white line-h-0 cursor-pointer">
           <img src={mainLogo.img1} alt="" className="w-16 md:w-24 "/>
           <button className="hidden md:flex flex-row items-center gap-1 hover:underline">Explore <span className="hidden md:text-yellow-400">Plus</span>
           <img src={mainLogo.img2} alt="" className="w-3"/>
           </button>
         </div>
-
+        </Link>
         {/* Search bar */}
         <div className="flex flex-row items-center">
           <input
