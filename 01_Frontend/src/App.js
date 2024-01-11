@@ -1,4 +1,5 @@
 import ProductDetailView from "./components/details/ProductDetailView";
+import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import DataContextProvider from "./context/DataContext";
@@ -10,10 +11,13 @@ function App() {
     <DataContextProvider>
       <BrowserRouter >
         <Header />
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetailView />} />
         </Routes>
+
+        <Footer />
       </BrowserRouter>
     </DataContextProvider>
   );
