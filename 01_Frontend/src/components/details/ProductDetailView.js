@@ -19,6 +19,7 @@ const ProductDetailView = () => {
      useEffect(() => {
           if (product._id !== id) {
                dispatch(getProductDetails(id))
+              
           }
      }, [dispatch, product._id, id])
 

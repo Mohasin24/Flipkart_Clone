@@ -58,10 +58,12 @@ const Header = () => {
             <CustomButton text={"Become a seller"} btnColor={"text-white"} />
             <CustomButton text={"More"} btnColor={"text-white"} />
 
+            <Link to={"/product/cart"} target="_blank" >
             <div className="text-white flex flex-row items-center gap-1 cursor-pointer">
               <FaShoppingCart />
               <p>Cart</p>
             </div>
+            </Link>
           </div>
 
           {/* Hamburger menu */}
@@ -88,10 +90,12 @@ const Header = () => {
                 <CustomButton text={"Become a seller"} btnColor={"text-white"} />
                 <CustomButton text={"More"} btnColor={"text-white"} />
 
+                <Link to={"/product/cart"}>
                 <div className="text-white flex flex-row items-center gap-1 cursor-pointer">
                   <FaShoppingCart />
                   <p>Cart</p>
                 </div>
+                </Link>
               </div>
             </div>
           </div>
