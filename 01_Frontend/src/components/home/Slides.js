@@ -41,7 +41,7 @@ const Slides = ({ product ,title }) => {
                >
                     {
                          product.map(({ _id, url, title, discount }) => (
-                              <Link to={`/product/${_id}`} target='_blank' >
+                              <Link to={`/product/${_id}`}>
                               <div key={_id} className=' mr-3 flex flex-col items-center gap-2'>
                                    <img src={url} alt="Product" className='h-[90px] md:h-[130px] w-auto'/>
                                    <p>{title.shortTitle}</p>

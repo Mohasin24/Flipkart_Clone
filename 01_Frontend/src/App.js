@@ -8,9 +8,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
 
-  const hideFooterRoutes = ["/product/cart"]
+  // const hideFooterRoutes = ["/product/cart"]
   
-  const hideFooter = hideFooterRoutes.includes(window.location.pathname)
+  // const hideFooter = hideFooterRoutes.includes(window.location.pathname)
  
   return (
 
@@ -26,11 +26,12 @@ function App() {
           <Route path="/product/cart" element={<Cart />} />
         </Routes>
 
-        {
+        {/* {
           
           !hideFooter && <Footer />
-        }
+        } */}
 
+<Footer />
       </BrowserRouter >
 
     </DataContextProvider >

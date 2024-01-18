@@ -6,7 +6,7 @@ import { getAllProducts } from "../../redux/actions/ProductAction";
 import { useSelector } from "react-redux";
 import Slides from "./Slides";
 
-
+     
 const Home = ()=>{
 
      const {product} = useSelector(state=>state.getProducts)

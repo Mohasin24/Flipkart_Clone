@@ -20,7 +20,6 @@ const AuthenticationSignup = async (req,res)=>{
 
           res.status(200).json({msg : "Successful"})
      } catch (error) {
-          console.log(error)
           res.status(500).json(error)
      }
 }
@@ -34,20 +33,15 @@ const AuthenticationLogin = async(req, res)=>{
 
           if(validatedUser)
           {
-               console.log(validatedUser)
                res.status(200).json({data:validatedUser})
           }else{
-               console.log(validatedUser)
                res.status(404).json({message : "User not registered"})
           }
           
      } catch (error) {
-          console.log(error)
           res.status(500).json(error)
      }
      
 }
 
 module.exports = {AuthenticationSignup, AuthenticationLogin}
-
-9765728344

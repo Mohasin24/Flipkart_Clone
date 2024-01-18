@@ -2,20 +2,35 @@ import CustomButton from "./CustomButton";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import LoginDialog from "../login-registration/LoginDailog";
 import { mainLogo } from "../../constants/Data";
 import { DataContext } from "../../context/DataContext";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
+import CartBadge from "./CartBadge";
+import { useSelector } from "react-redux";
 
 const Header = () => {
 
   const [isMenuOpen, setMenuOpen] = useState(false)
+  const [count, setCount] = useState(0)
+
   const [open, setOpen] = useState(false);
 
   const { account, setAccount } = useContext(DataContext)
+
+  // const paths = ["/product/cart",]
+
+  // let hideBtn = paths.includes(window.location.pathname)
+
+  const { cartItems } = useSelector(state => state.cart)
+
+  useEffect(() => { 
+    setCount(cartItems.length) 
+  
+  }, [cartItems])
 
   return (
     <>
@@ -39,13 +54,6 @@ const Header = () => {
           {/* Buttons and cart */}
           <div className="hidden md:flex flex-row gap-1" >
 
-            {/* <CustomButton
-            text={"Login"}
-            bgColor={"bg-white"}
-            btnColor={"text-blue-700"} 
-            operation={()=>setOpen(false)}
-          /> */}
-
             {
               account ?
 
@@ -55,15 +63,25 @@ const Header = () => {
                 <button className="bg-white text-blue-700 px-5 active:bg-blue-700 active:text-white" onClick={() => setOpen(true)}>Login</button>
             }
 
-            <CustomButton text={"Become a seller"} btnColor={"text-white"} />
-            <CustomButton text={"More"} btnColor={"text-white"} />
+            {/* Cart and Buttons */}
+            {
+              /* Hiding the buttons on cart page */
+              // !hideBtn &&
+              <>
+                <CustomButton text={"Become a seller"} btnColor={"text-white"} />
+                <CustomButton text={"More"} btnColor={"text-white"} />
 
-            <Link to={"/product/cart"} target="_blank" >
-            <div className="text-white flex flex-row items-center gap-1 cursor-pointer">
-              <FaShoppingCart />
-              <p>Cart</p>
-            </div>
-            </Link>
+                <Link to={"/product/cart"}>
+                  <div className="text-white flex flex-row items-center gap-1 cursor-pointer">
+
+                    <CartBadge count={count} />
+
+                    <FaShoppingCart />
+                    <p>Cart</p>
+                  </div>
+                </Link>
+              </>
+            }
           </div>
 
           {/* Hamburger menu */}
@@ -91,10 +109,10 @@ const Header = () => {
                 <CustomButton text={"More"} btnColor={"text-white"} />
 
                 <Link to={"/product/cart"}>
-                <div className="text-white flex flex-row items-center gap-1 cursor-pointer">
-                  <FaShoppingCart />
-                  <p>Cart</p>
-                </div>
+                  <div className="text-white flex flex-row items-center gap-1 cursor-pointer">
+                    <FaShoppingCart />
+                    <p>Cart</p>
+                  </div>
                 </Link>
               </div>
             </div>
