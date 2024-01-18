@@ -14,6 +14,9 @@ app.use(cors())
 app.use(express.json())
 app.use("/api/v1", Router)
 
+if(process.env.NODE_ENV === 'production'){
+     app.use(express.static('client/build'))
+}
 
 
 const start = async()=>{

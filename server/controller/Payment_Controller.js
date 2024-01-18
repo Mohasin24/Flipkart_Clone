@@ -1,5 +1,5 @@
 const paytmchecksum = require('../paytm/PaytmChecksum')
-const {paytmMerchantKey,paytmParams} = require('../index')
+const {paytmMerchantKey,paytmParams} = require('../server')
 
 const paymentGateway = async(req,res)=>{
      
